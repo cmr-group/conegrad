@@ -23,7 +23,7 @@ res = [1e-3, 1e-3]  # [m], this is XY, and Z
 fov = np.array([0.24, 0.24])  # [m], this is XY, and Z
 gmax = 0.08  # [T/m]
 smax = 80  # [T/m/s]
-# Note: units cant be in CGS, just change the `units` argument
+# Note: units can be in CGS, just change the `units` argument
 
 dt = 4e-6  # [s]
 t_readout = 3e-3 # [s]
