@@ -30,7 +30,7 @@ jobs:
         env:
           CIBW_BUILD_VERBOSITY: 1
 
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v6
         with:
           name: cibw-wheels-${{ matrix.os }}
           path: ./wheelhouse/*.whl
@@ -51,7 +51,7 @@ jobs:
           python -m pip install --upgrade pip build
           python -m build --sdist
 
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v6
         with:
           name: cibw-sdist
           path: dist/*.tar.gz
@@ -68,7 +68,7 @@ jobs:
     permissions:
       id-token: write  # for PyPI trusted publishing
     steps:
-      - uses: actions/download-artifact@v5
+      - uses: actions/download-artifact@v6
         with:
           pattern: cibw-*
           path: dist
