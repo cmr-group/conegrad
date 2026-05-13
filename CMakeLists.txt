@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.18...3.27)
+cmake_minimum_required(VERSION 3.26...3.30)
 project(conegrad LANGUAGES C CXX)
 
 if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
@@ -21,7 +21,7 @@ else()
                       -Wno-format)
 endif()
 
-find_package(Python 3.11 COMPONENTS Interpreter Development.Module REQUIRED)
+find_package(Python 3.11 COMPONENTS Interpreter Development.Module Development.SABIModule REQUIRED)
 
 execute_process(
   COMMAND "${Python_EXECUTABLE}" -m nanobind --cmake_dir

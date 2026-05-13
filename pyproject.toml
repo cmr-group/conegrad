@@ -20,7 +20,7 @@ wheel.py-api = "cp312"
 # wider compatibility if needed.
 
 [tool.scikit-build.cmake]
-version = ">=3.18"
+version = ">=3.26"
 
 [tool.cibuildwheel]
 build = "cp312-* cp313-*"
@@ -51,7 +51,7 @@ conegrad = { path = ".", editable = true }
 python = ">=3.11"
 numpy = "*"
 pip = "*"
-cmake = ">=3.18"
+cmake = ">=3.26"
 ninja = "*"
 nanobind = "*"
 
