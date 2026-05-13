@@ -1,0 +1,74 @@
+[project]
+authors = [{name = "mloecher", email = "michael.w.loecher@gmail.com"}]
+dependencies = ["numpy>=1.23"]
+name = "conegrad"
+requires-python = ">= 3.11"
+version = "0.0.1"
+description = "Python wrapper for 3D Cones MRI k-space trajectory design"
+readme = "README.md"
+license = {text = "MIT"}
+
+[build-system]
+build-backend = "scikit_build_core.build"
+requires = ["scikit-build-core>=0.8", "nanobind>=2.0", "typing-extensions>=4.0; python_version < '3.11'"]
+
+[tool.scikit-build]
+minimum-version = "0.8"
+build-dir = "build/{wheel_tag}"
+wheel.py-api = "cp312"
+# Stable ABI (abi3) wheel — works on Python 3.12+. Use a lower target for
+# wider compatibility if needed.
+
+[tool.scikit-build.cmake]
+version = ">=3.18"
+
+[tool.cibuildwheel]
+build = "cp312-* cp313-*"
+skip = ["*-musllinux_*", "pp*"]
+# Note: with abi3 wheels we technically only need to build once per platform,
+# but cibuildwheel still iterates; the resulting wheel filenames are abi3.
+build-verbosity = 1
+test-requires = ["pytest", "numpy"]
+test-command = "pytest {project}/tests"
+
+[tool.cibuildwheel.linux]
+archs = ["x86_64"]
+
+[tool.cibuildwheel.macos]
+archs = ["x86_64", "arm64"]
+
+[tool.cibuildwheel.windows]
+archs = ["AMD64"]
+
+[tool.pixi.workspace]
+channels = ["conda-forge"]
+platforms = ["win-64"]
+
+[tool.pixi.pypi-dependencies]
+conegrad = { path = ".", editable = true }
+
+[tool.pixi.dependencies]
+python = ">=3.11"
+numpy = "*"
+pip = "*"
+cmake = ">=3.18"
+ninja = "*"
+nanobind = "*"
+
+[tool.pixi.tasks]
+
+[tool.pixi.feature.dev.dependencies]
+jupyterlab = "*"
+ipywidgets = "*"
+matplotlib = "*"
+pytest = "*"
+pyvista = ">=0.48.2,<0.49"
+imageio = ">=2.37.0,<3"
+trame = ">=3.13.1,<4"
+trame-vuetify = ">=3.2.2,<4"
+trame-vtk = ">=2.11.8,<3"
+jupyter-server-proxy = ">=4.5.0,<5"
+
+[tool.pixi.environments]
+default = { solve-group = "default" }
+dev = { features = ["dev"], solve-group = "default" }
