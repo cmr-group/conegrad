@@ -6,7 +6,6 @@ requires-python = ">= 3.11"
 version = "0.0.1"
 description = "Python wrapper for 3D Cones MRI k-space trajectory design"
 readme = "README.md"
-license = {text = "MIT"}
 
 [build-system]
 build-backend = "scikit_build_core.build"
